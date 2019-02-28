@@ -1,0 +1,18 @@
+{
+	"name": "four",
+	"version": "1.0.0",
+	"description": "",
+	"main": "cincinnativ4.js",
+	"scripts": {
+		"build:js": ".\\node_modules\\.bin\\gulp",
+		"watch:js": ".\\node_modules\\.bin\\gulp watch-js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"gulp": "^3.9.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-sourcemaps": "^2.6.5"
+	}
+}
