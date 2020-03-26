@@ -1,18 +1,17 @@
 {
-	"name": "four",
-	"version": "1.0.0",
+	"name": "cinnamon",
+	"version": "2.0.0",
 	"description": "",
-	"main": "cincinnativ4.js",
+	"main": "./dist/cinnamon-esm.js",
 	"scripts": {
-		"build:js": ".\\node_modules\\.bin\\gulp",
-		"watch:js": ".\\node_modules\\.bin\\gulp watch-js"
+		"build:js": "rollup --config",
+		"watch:js": "rollup --config --watch"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"devDependencies": {
-		"gulp": "^3.9.1",
-		"gulp-concat": "^2.6.1",
-		"gulp-sourcemaps": "^2.6.5"
+	"devDependencies": {},
+	"dependencies": {
+		"rollup": "^2.0.6"
 	}
 }
