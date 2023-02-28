@@ -1,10 +1,13 @@
 
-import { get } from "./services/get-set-define.service";
+import { get } from "sage-library";
+
 import { loadElement } from "./load-element";
 import { addDefaultSettings } from "./addDefaultSettings";
 
 import { addPoints, addPolygons } from "./logic/addItems";
+
 import { RADIANS } from "./constants/RADIANS";
+
 import { render } from "./render/render";
 import { reset } from "./render/reset";
 
@@ -14,20 +17,29 @@ import { Aperture } from "./models/Aperture.model";
 import { Point } from "./models/Point.model";
 import { Line } from "./models/Line.model";
 import { Polygon } from "./models/Polygon.model";
+import { ShapeEvent } from "./models/ShapeEvent.model";
 
+// Movements
 import { wipeWindows } from "./movements/wipe-windows";
 import { sauronsEye } from "./movements/saurons-eye";
 import { attentionCentre } from "./movements/attention-centre";
-import { ShapeEvent } from "./models/ShapeEvent.model";
+
+export { findIntersection as findPlaneIntersection, getPlaneFromThreePoints } from "./services/plane.service";
+export { isPointBetweenLinePoints } from "./services/is-point-between-line-points.service";
 
 export const Cinnamon = function(
     element,
     offset = 0
 ){
     this.element = null;
+
     if (element instanceof Element) {
         this.loadElement(element);
     }
+
+    this.renderType = "svg";
+    this.canvasContext = null;
+
     this.x = null;
     this.y = null;
     this.z = null;
@@ -44,6 +56,8 @@ export const Cinnamon = function(
     this.polygons = [];
 
     this.type = null;
+
+    this.planes = null;
 
     Object.seal(this);
 }
