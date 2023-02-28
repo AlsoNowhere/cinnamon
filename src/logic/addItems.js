@@ -12,7 +12,7 @@ export const addPoints = function(
     const filtered = points.filter(x => x instanceof Point);
 
     if (filtered.length < points.length) {
-        console.warn(`${filter.length - points.length} points were filtered out because they were not instances of Cinnamon.Point. Please clean your data.`);
+        console.warn(`${points.length - filtered.length}/${points.length} points were filtered out because they were not instances of Cinnamon.Point. Please clean your data.`);
     }
 
     this.points.push(...filtered);
@@ -30,7 +30,7 @@ export const addPolygons = function(
     const filtered = polygons.filter(x => x instanceof Polygon);
 
     if (filtered.length < polygons.length) {
-        console.warn(`${filter.length - polygons.length} polygons were filtered out because they were not instances of Cinnamon.Polygon. Please clean your data.`);
+        console.warn(`${polygons.length - filtered.length}/${polygons.length} polygons were filtered out because they were not instances of Cinnamon.Polygon. Please clean your data.`);
     }
 
     this.polygons.push(...filtered);

@@ -1,4 +1,5 @@
 import { defaultColour } from "../constants/values";
+import { getPlane, getPlaneFromThreePoints } from "../services/plane.service";
 import { ShapeEvent } from "./ShapeEvent.model";
 
 export const Polygon = function(
@@ -30,6 +31,12 @@ export const Polygon = function(
     }
 
     this.points = points;
+    this.renderPoints = points;
+    this.plane = getPlaneFromThreePoints(...points.slice(0, 3));
+
+    // this.reset = function(){
+    //     this.points = points;
+    // }
 
     Object.defineProperty(this,"centre",{
         get(){

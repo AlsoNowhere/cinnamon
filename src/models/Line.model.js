@@ -1,5 +1,9 @@
-import { Point } from "./Point.model";
+
 import { defaultColour, defaultSize } from "../constants/values";
+
+import { getDistance3D } from "../logic/get-disance.logic";
+
+import { Point } from "./Point.model";
 
 export const Line = function(
     a,
@@ -21,6 +25,20 @@ export const Line = function(
 
     this.a = a;
     this.b = b;
+
+    this.parametric = function(){
+        const difference = {
+            x: b.x-a.x,
+            y: b.y-a.y,
+            z: b.z-a.z
+        }
+        const x = {c:a.x,t:difference.x};
+        const y = {c:a.y,t:difference.y};
+        const z = {c:a.z,t:difference.z};
+        return {x,y,z};
+    }();
+
+    this.distance = getDistance3D(a, b);
 
     this.colour = options.colour || defaultColour;
     this.thickness = options.thickness || defaultSize;
