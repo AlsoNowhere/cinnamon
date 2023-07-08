@@ -1,48 +1,31 @@
+import { getDistance3D } from "../services/get-distance.service";
 
-import { defaultColour, defaultSize } from "../constants/values";
+export const Line = function (
+  start,
+  end,
+  { colour, thickness, id, ignore } = {}
+) {
+  this.start = start;
+  this.end = end;
 
-import { getDistance3D } from "../logic/get-disance.logic";
+  const difference = {
+    x: end.x - start.x,
+    y: end.y - start.y,
+    z: end.z - start.z,
+  };
 
-import { Point } from "./Point.model";
+  const x = { c: start.x, t: difference.x };
+  const y = { c: start.y, t: difference.y };
+  const z = { c: start.z, t: difference.z };
 
-export const Line = function(
-    a,
-    b,
-    options = {
-        colour: defaultColour,
-        thickness: defaultSize
-    }
-){
-    if (!(a instanceof Point)) {
-        throw new Error("Cinnamon, Line, a -- You must pass an instance of Cinnamon.Point for the argument a.");
-    }
-    if (!(b instanceof Point)) {
-        throw new Error("Cinnamon, Line, b -- You must pass an instance of Cinnamon.Point for the argument b.");
-    }
-    if (!(options instanceof Object)) {
-        throw new Error("Cinnamon, Line, options -- You must pass an Object or undefined to the options argument.");
-    }
+  this.parametric = { x, y, z };
 
-    this.a = a;
-    this.b = b;
+  this.distance = getDistance3D(start, end);
 
-    this.parametric = function(){
-        const difference = {
-            x: b.x-a.x,
-            y: b.y-a.y,
-            z: b.z-a.z
-        }
-        const x = {c:a.x,t:difference.x};
-        const y = {c:a.y,t:difference.y};
-        const z = {c:a.z,t:difference.z};
-        return {x,y,z};
-    }();
+  this.colour = colour || "#fff";
+  this.thickness = thickness || 1;
+  this.id = id;
+  this.ignore = ignore || false;
 
-    this.distance = getDistance3D(a, b);
-
-    this.colour = options.colour || defaultColour;
-    this.thickness = options.thickness || defaultSize;
-
-    Object.freeze(this);
-
-}
+  Object.freeze(this);
+};
