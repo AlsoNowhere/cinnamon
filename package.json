@@ -1,18 +1,18 @@
 {
-	"name": "cinnamon-library",
-	"version": "1.0.0",
-	"description": "",
-	"main": "./dist/cinnamon-esm.js",
-	"scripts": {
-		"build:js": "rollup --config",
-		"watch:js": "rollup --config --watch"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@rollup/plugin-node-resolve": "^7.1.1",
-		"rollup": "^2.0.6",
-		"sage-library": "^1.0.0"
-	}
+  "name": "cinnamon-library",
+  "version": "2.0.0",
+  "description": "",
+  "main": "./dist/cinnamon.js",
+  "type": "module",
+  "scripts": {
+    "build:js": "rollup --config",
+    "watch:js": "rollup --config --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^3.17.3"
+  }
 }

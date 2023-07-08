@@ -1,13 +1,10 @@
 
 export const Aperture = function(
-    zx = 45
+    zx,
+    y
 ){
-    if (typeof zx !== "number") {
-        throw new Error("Cinnamon, Aperture, zx -- You must pass a number to zx argument.");
-    }
-
     this.zx = zx;
-    this.y = 0;
+    this.y = y;
 
-    Object.seal(this);
+    Object.freeze(this);
 }
