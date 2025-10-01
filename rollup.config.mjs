@@ -7,15 +7,6 @@ export default {
       file: "./dist/cinnamon.js",
       format: "esm",
     },
-    // {
-    //   file: "./dist/cinnamon-test.js",
-    //   format: "cjs",
-    // },
-    // {
-    //   file: "./dist/cinnamon-experiment.js",
-    //   format: "iife",
-    //   name: "cinnamon",
-    // },
   ],
   plugins: [typescript()],
   watch: {

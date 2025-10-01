@@ -35,15 +35,13 @@ export class Line {
     this.start = start;
     this.end = end;
 
-    const difference = {
-      x: end.x - start.x,
-      y: end.y - start.y,
-      z: end.z - start.z,
-    };
+    const [dX, dY, dZ] = (["x", "y", "z"] as ["x", "y", "z"]).map(
+      (x) => end[x] - start[x]
+    );
 
-    const x = { c: start.x, t: difference.x };
-    const y = { c: start.y, t: difference.y };
-    const z = { c: start.z, t: difference.z };
+    const x = { c: start.x, t: dX };
+    const y = { c: start.y, t: dY };
+    const z = { c: start.z, t: dZ };
 
     this.parametric = { x, y, z };
 

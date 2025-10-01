@@ -20,11 +20,7 @@ const getXY = (angle: number, distance: number, inverse = false) => {
   return { x, y };
 };
 
-export const manipulatePoint = (
-  centre: Point,
-  direction: Direction,
-  point: Point
-) => {
+export const manipulatePoint = (centre: Point, direction: Direction, point: Point) => {
   let { x, y, z } = point;
   x -= centre.x;
   y -= centre.y;
