@@ -1,7 +1,4 @@
-export const setAttributes = (
-  target: Element,
-  attributes: Record<string, string | Object | undefined>
-): void => {
+export const setAttributes = (target: SVGElement, attributes: Record<string, string | Object | undefined>): void => {
   Object.entries(attributes).forEach(([key, value]) => {
     if (value instanceof Object) {
       const newValue = Object.entries(value)

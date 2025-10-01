@@ -1,4 +1,5 @@
 import { findLastIndex } from "../../services/find-last-index.service";
+import { getDimensions } from "../../services/get-dimensions.service";
 
 import { resolveLine } from "./resolve-line.logic";
 import { polywag } from "./poly-wag.logic";
@@ -13,7 +14,6 @@ import { ILineInView } from "../../interfaces/ILineInView.interface";
 import { ILineStartInView } from "../../interfaces/ILineStartInView.interface";
 import { ILineNoneInView } from "../../interfaces/ILineNoneInView.interface";
 import { IIntersect } from "../../interfaces/IIntersect.interface";
-import { getDimensions } from "../../services/get-dimensions.service";
 import { IResolvedPoint } from "../../interfaces/IResolvedPoint.interface";
 
 export const resolvePolygon = function (polygon: Polygon) {
@@ -64,14 +64,10 @@ export const resolvePolygon = function (polygon: Polygon) {
       }
     } else if (inView === 0) {
       const startIndex = intersects.findIndex((x: any) => x.inView);
-      // const endIndex = intersects.findLastIndex((x: any) => x.inView);
       const endIndex = findLastIndex<IIntersect>(intersects, (x) => x.inView);
       const filteredIntersects = intersects.filter((x: IIntersect) => x.inView);
       const [start, end] = filteredIntersects.map((x: IIntersect) => ({
-        resolvedPoint: getDimensions.apply(this, [
-          x.value,
-          true,
-        ]) as IResolvedPoint,
+        resolvedPoint: getDimensions.apply(this, [x.value, true]) as IResolvedPoint,
         point: x.value,
       }));
       const pre = intersects.slice(0, startIndex);
@@ -108,9 +104,7 @@ export const resolvePolygon = function (polygon: Polygon) {
         journey.steps.push(...part.intersects.post);
       }
       let j = 0;
-      while (
-        part.type === "start in view" ? j++ < story.length : j++ <= story.length
-      ) {
+      while (part.type === "start in view" ? j++ < story.length : j++ <= story.length) {
         control++;
         if (control > 1000) throw "Control FAIL";
         if (i === story.length) {

@@ -7,7 +7,7 @@ export class Direction {
     this.y = y;
   }
 
-  clone({ zx: _zx, y: _y }: { zx?: number; y?: number }) {
+  clone({ zx: _zx, y: _y }: { zx?: number; y?: number } = {}) {
     const { zx, y } = this;
     return new Direction(_zx ?? zx, _y ?? y);
   }

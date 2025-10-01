@@ -33,10 +33,11 @@ export class Polygon {
     ...rest
   }: {
     points?: Array<Point>;
-  } & IOptions) {
-    const { points, colour, id } = this;
+  } & IOptions = {}) {
+    const { points, colour, attributes, id } = this;
     const options: IOptions = {
       colour: rest?.colour || colour,
+      attributes: rest?.attributes || attributes,
     };
     id && (options.id = id);
     rest?.id && (options.id = id);
