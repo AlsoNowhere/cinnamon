@@ -14,7 +14,7 @@ Define an SVG element or canvas element.
 Its a good idea to make this width and height 100% yourself because these elements don't stretch on their own and they have default dimensions you might not want.
 
 Get a reference to the element you have defined and add this to a new instance of Cinnamon.
-`import { Cinnamon, Point } from "cinnamon";
+```import { Cinnamon, Point } from "cinnamon";
 
 (function(){
   const element = document.querySelector("svg");
@@ -28,4 +28,4 @@ Get a reference to the element you have defined and add this to a new instance o
   cinnamon.centre = new Point(0, 0, -100);
 
   cinamon.render();
-})()`
+})()```
